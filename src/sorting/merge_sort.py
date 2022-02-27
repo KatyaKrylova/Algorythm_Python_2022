@@ -1,52 +1,13 @@
-"""
->>> import io, sys 
->>> sys.stdin = io.StringIO(chr(10).join([\
-'1',\
-'1'\
-]))
->>> task_merge_sort()
-1
->>> sys.stdin = io.StringIO(chr(10).join([\
-'2',\
-'3 1',\
-]))
->>> task_merge_sort()
-1 2 1 3
-1 3 
->>> sys.stdin = io.StringIO(chr(10).join([\
-'5',\
-'5 4 3 2 1',\
-]))
->>> task_merge_sort()
-1 2 4 5
-4 5 1 2
-3 5 1 3
-1 5 1 5
-1 2 3 4 5 
->>> print(merge([2,3,4],[1,2,3]))
-[1, 2, 2, 3, 3, 4]
-"""
-
-def merge(A, B):
-    res = []
-    return res
-
-def merge_sort(A):
-    if len(A) == 1:
-        return A
-    l = A[0:len(A)//2]
-    r = A[len(A)//2:]
-    l = merge_sort(l)
-    r = merge_sort(r)
-    print("{:d} {:d}".format(r[0], l[-1]))
-    return merge(l, r)
-
-def task_merge_sort():
-    n = int(input())
-    arr = list(map(int, input().split(" ")))
-    res = merge_sort(arr)
-    print(" ".join(list(map(str,res))))
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod(verbose=True)
+def Answ():
+    num=int(input())
+    mas=[]
+    for i in range(num):
+        mas.append(list(map(int,input().split())))
+        mas.sort(key = lambda x: x[1], reverse=True)
+    for j in range(num-1):
+        for i in range(0,num-j-1):
+            if mas[i][1]==mas[i+1][1] and mas[i][0]>=mas[i+1][0]:
+                mas[i][0],mas[i+1][0]=mas[i+1][0],mas[i][0]
+    for i in range(num):
+        print(mas[i][0],mas[i][1])
+Answ()
