@@ -26,7 +26,7 @@ def Merge(A,B):
     return C,Count
 
 inv=0
-M=[]
+m = []
 def task():
     n = int(input())
     print(Merge_sort(list(map(int, input().split())))[1])
